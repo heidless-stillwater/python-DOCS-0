@@ -79,10 +79,23 @@ https://pfolio-frontend-svc-1089619978780.europe-west2.run.app
 IMAGES_DIR=./public/images
 LOGO_DIR=./public/logo
 
+
+
+
 # gsCloud
-GCP_BUCKET=heidless-frontend-bucket-4
+
 GCP_IMAGES_DIR=gs://${GCP_BUCKET}
 GCP_LOGO_DIR=gs://${GCP_BUCKET}
+
+
+# logos
+gsutil cp -r ${IMAGES_DIR} ${GCP_BUCKET}
+
+# images
+gsutil cp -r ${IMAGES_DIR} ${GCP_BUCKET}
+
+
+
 
 echo ICONS_DIR: ${LOGO_DIR}
 echo IMAGES_DIR: ${IMAGES_DIR}
@@ -92,6 +105,7 @@ echo GCP_LOGO_DIR: ${GCP_LOGO_DIR}
 
 # upload
 gsutil cp -r ${IMAGES_DIR} ${GCP_IMAGES_DIR}
+
 gsutil cp -r ${LOGO_DIR} ${GCP_LOGO_DIR}
 
 ```
